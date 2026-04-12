@@ -1,0 +1,282 @@
+/* You can add global styles to this file, and also import other style files */
+.layout {
+  display: flex;
+}
+
+.sidebar {
+  width: 220px;
+  background: #6f9cde;
+  color: white;
+  height: 100vh;
+  padding: 20px;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+:root {
+  --sidebar-bg: #0f172a;
+  --sidebar-active: #1e293b;
+  --accent-blue: #3b82f6;
+  --bg-light: #f8fafc;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --success: #22c55e;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-main);
+}
+
+/* Layout Structure */
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar Styling */
+.sidebar {
+  width: 260px;
+  background-color: var(--sidebar-bg);
+  color: white;
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  padding: 0 20px 40px;
+  gap: 12px;
+}
+
+.logo-icon {
+  background: var(--accent-blue);
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar nav a {
+  color: #94a3b8;
+  text-decoration: none;
+  padding: 12px 24px;
+  transition: 0.2s;
+}
+
+.sidebar nav a.active {
+  background-color: var(--sidebar-active);
+  color: white;
+  border-left: 4px solid var(--accent-blue);
+}
+
+/* Main Content Area */
+.content {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+}
+
+.topbar h1 { margin: 0; font-size: 24px; }
+.topbar p { color: var(--text-muted); margin: 4px 0 0; }
+
+/* Dashboard Cards (Stats) */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  background: #fefce8; /* Couleur crème comme sur l'image */
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+/* New Project Input Row */
+.new-project-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  outline: none;
+}
+
+.btn-primary {
+  background: white;
+  border: 1px solid var(--border-color);
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* Projects List */
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.project-card {
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: transform 0.1s;
+}
+
+.project-card:hover {
+  border-color: var(--accent-blue);
+}
+
+.project-icon {
+  width: 45px;
+  height: 45px;
+  background: #eff6ff;
+  color: var(--accent-blue);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.project-info { flex: 1; }
+.project-name { font-weight: 600; margin-bottom: 4px; }
+.project-meta { font-size: 13px; color: var(--text-muted); }
+
+.status-active {
+  background: #f0fdf4;
+  color: var(--success);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.projects-header {
+  display: flex;
+  justify-content: space-between; /* Pousse le titre à gauche et la recherche à droite */
+  align-items: center;           /* Aligne verticalement au centre */
+  margin: 32px 0 16px 0;         /* Espace au-dessus et en-dessous */
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0;                     /* Retire les marges par défaut du h2 */
+}
+
+.search-wrapper {
+  position: relative;
+  width: 280px;                  /* Largeur fixe pour la barre de recherche */
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 12px 10px 38px;  /* Padding gauche large pour laisser place à l'icône */
+  background-color: #f1f5f9;     /* Gris très léger comme sur l'image */
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;           /* Bords arrondis stylés */
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.search-input:focus {
+  background-color: #ffffff;
+  border-color: #3b82f6;         /* Bordure bleue au clic */
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.project-actions {
+  display: flex;
+  gap: 8px;
+  margin-left: 16px;
+}
+
+.btn-action {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.btn-action:hover {
+  background-color: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #1e293b;
+}
+
+/* Optionnel : Couleur rouge au survol de la poubelle */
+.btn-action[title="Delete"]:hover {
+  background-color: #fef2f2;
+  border-color: #fecaca;
+  color: #ef4444;
+}
+
+/* Ajustement de la carte pour bien aligner le tout */
+.project-card {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}

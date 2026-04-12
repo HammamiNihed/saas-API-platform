@@ -1,0 +1,49 @@
+<div class="login-page">
+  <div class="login-card">
+    <div class="login-header">
+      <div class="logo-icon">A</div>
+      <h1>Create account</h1>
+      <p>Start building your dynamic APIs today</p>
+    </div>
+
+    <form class="login-form">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" placeholder="John Doe"
+               [(ngModel)]="name" [ngModelOptions]="{standalone: true}" required>
+      </div>
+
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="name@company.com"
+               [(ngModel)]="email" [ngModelOptions]="{standalone: true}" required>
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input [type]="showPassword ? 'text' : 'password'" placeholder="••••••••"
+               [(ngModel)]="password" [ngModelOptions]="{standalone: true}" required>
+        <span class="toggle-password" (click)="showPassword = !showPassword">
+          {{ showPassword ? '🙈 Hide' : '👁 Show' }}
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input [type]="showPassword ? 'text' : 'password'" placeholder="••••••••"
+               [(ngModel)]="confirmPassword" [ngModelOptions]="{standalone: true}" required>
+      </div>
+
+      <button type="submit" (click)="register()" class="btn-login" [disabled]="loading">
+        {{ loading ? 'Creating account...' : 'Create account' }}
+      </button>
+
+      <p class="error" *ngIf="error">{{ error }}</p>
+      <p class="success" *ngIf="success">{{ success }}</p>
+    </form>
+
+    <div class="login-footer">
+      Already have an account? <a routerLink="/login">Sign in</a>
+    </div>
+  </div>
+</div>

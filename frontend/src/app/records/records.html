@@ -1,0 +1,136 @@
+<div class="page">
+
+  <!-- Header -->
+  <div class="page-header">
+    <h1>{{ collectionName }}</h1>
+    <p>Manage collection records</p>
+  </div>
+
+  <!-- Projet désactivé -->
+@if (projectBlocked) {
+  <div class="blocked-banner">
+    <span>⛔</span>
+    <div>
+      <strong>Projet désactivé</strong>
+      <p>Ce projet est inactif. Activez-le depuis le dashboard pour accéder aux données.</p>
+    </div>
+  </div>
+}
+@if (!projectBlocked) {
+  <!-- Stats -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="label">Total Records</div>
+      <div class="value">{{ records.length }}</div>
+      <div class="trend">↑ active collection</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Fields</div>
+      <div class="value">{{ schema.length }}</div>
+      <div class="trend">{{ schema.length }} fields defined</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Status</div>
+      <div class="value" style="font-size: 16px; padding-top: 4px;">
+        <span class="badge-active">Active</span>
+      </div>
+      <div class="trend">Collection live</div>
+    </div>
+  </div>
+
+  <!-- Card -->
+  <div class="card">
+
+    <h2 class="card-title">All records</h2>
+
+    <!-- Form row -->
+    <div class="new-project-row">
+      @for (field of schema; track $index) {
+        @if (field.type === 'string') {
+          <input
+            [(ngModel)]="formData[field.name]"
+            [placeholder]="field.name"
+            class="new-project-input"
+          />
+        }
+        @if (field.type === 'number') {
+          <input
+            type="number"
+            [(ngModel)]="formData[field.name]"
+            [placeholder]="field.name"
+            class="new-project-input"
+          />
+        }
+      }
+
+      <button class="btn btn-primary" (click)="save()">
+        {{ editId ? '✅ Update' : '+ Add' }}
+      </button>
+
+      <!-- Bouton Annuler visible uniquement en mode édition -->
+      @if (editId) {
+        <button class="btn btn-secondary" (click)="cancelEdit()">
+          ❌ Cancel
+        </button>
+      }
+    </div>
+
+    <!-- Bandeau mode édition -->
+    @if (editId) {
+      <div class="edit-banner">
+        ✏️ Editing record — modify the fields above and click <strong>Update</strong>
+      </div>
+    }
+
+    <!-- Records list -->
+    <div class="projects-list">
+      @for (r of records; track $index) {
+        <div class="project-card" [class.editing]="editId === r._id">
+
+          <div class="project-icon">
+            {{ r?.data?.[schema[0]?.name]?.[0]?.toUpperCase() }}
+          </div>
+
+          <div class="project-info">
+            <div class="project-name">{{ r?.data?.[schema[0]?.name] }}</div>
+            <div class="project-meta">
+              @for (field of schema.slice(1); track $index) {
+                <span>{{ r?.data?.[field.name] }}&nbsp;</span>
+              }
+            </div>
+          </div>
+
+          <span class="status-active">Active</span>
+
+          <div class="project-actions">
+            <button
+              class="btn-action"
+              title="Edit"
+              (click)="startEdit(r)"
+              [disabled]="editId !== null && editId !== r._id"
+            >
+              <span class="icon-edit">✏️</span>
+            </button>
+            <button
+              class="btn-action"
+              title="Delete"
+              (click)="deleteRecord(r._id)"
+              [disabled]="editId === r._id"
+            >
+              <span class="icon-delete">🗑️</span>
+            </button>
+          </div>
+
+        </div>
+      }
+
+      @if (records.length === 0) {
+        <div class="empty-state">
+          <p>No records yet. Add your first record above.</p>
+        </div>
+      }
+    </div>
+
+  </div>
+}
+</div>

@@ -1,0 +1,30 @@
+
+
+<div class="login-page">
+  <div class="login-card">
+    <div class="login-header">
+      <div class="logo-icon">A</div>
+      <h1>Welcome back</h1>
+      <p>Enter your credentials to access your API SaaS</p>
+    </div>
+
+    <form class="login-form">
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="name@company.com" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" required>
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" placeholder="••••••••" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" required>
+      </div>
+
+      <button type="submit" (click)="login()" class="btn-login">Sign in</button>
+      <p class="error" *ngIf="error">{{ error }}</p>
+    </form>
+
+    <div class="login-footer">
+      Don't have an account? <a routerLink="/register">Create</a>
+    </div>
+  </div>
+</div>

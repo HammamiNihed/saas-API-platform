@@ -1,0 +1,101 @@
+<div class="page">
+<div class="topbar">
+  <div>
+    <h1>Projects</h1>
+    <p>Manage your API projects</p>
+  </div>
+</div>
+
+<div class="stats-grid">
+  <div class="stat-card">
+    <small>Total Projects</small>
+    <h2>{{ projects.length }}</h2>
+    <span style="color: green">↑ projects</span>
+  </div>
+  <div class="stat-card">
+    <small>API Requests</small>
+    <h2>{{ stats ? (stats.totalRequests | number) : '...' }}</h2>
+    <span style="color: green">
+      ↑ {{ stats?.requestsChangePercent }}% vs last week
+    </span>
+  </div>
+  <div class="stat-card">
+    <small>Collections</small>
+    <h2>{{ stats ? stats.totalCollections : '...' }}</h2>
+    <span style="color: green">
+      ↑ {{ stats?.collectionsThisMonth }} this month
+    </span>
+  </div>
+</div>
+
+<div class="search-container">
+  <h2 class="section-title">All projects</h2>
+</div>
+
+<div class="new-project-row">
+  <input [(ngModel)]="newProject" placeholder="New project name..." />
+  <button class="btn-primary" (click)="addProject()">+ Create</button>
+</div>
+
+<div class="projects-list">
+  @for (p of projects; track $index) {
+    <div class="project-card">
+      <div class="project-icon">{{ p.name[0].toUpperCase() }}</div>
+
+      <div class="project-info">
+
+        <!-- Mode lecture -->
+        @if (editingProjectId !== p._id) {
+          <div [routerLink]="['/projects', p._id, 'collections']"
+               style="cursor: pointer;" class="project-name">
+            {{ p.name }}
+          </div>
+          <div class="project-meta">{{ p.createdAt | date:'mediumDate' }}</div>
+        }
+
+        <!-- Mode édition -->
+        @if (editingProjectId === p._id) {
+          <input class="edit-input"
+                 [(ngModel)]="editingName"
+                 (keyup.enter)="confirmEdit(p)"
+                 (keyup.escape)="cancelEdit()"
+                 autofocus />
+        }
+
+      </div>
+
+      <!-- Badge dynamique -->
+      <span [class]="p.isActive ? 'status-active' : 'status-inactive'">
+        {{ p.isActive ? 'Active' : 'Inactive' }}
+      </span>
+
+      <!-- Bouton toggle -->
+      <button class="btn-action" 
+              [title]="p.isActive ? 'Désactiver' : 'Activer'"
+              (click)="toggleProject(p)">
+        {{ p.isActive ? '🟢' : '🔴' }}
+      </button>
+      
+      <div class="project-actions">
+
+        <!-- Boutons lecture -->
+        @if (editingProjectId !== p._id) {
+          <button class="btn-action" title="Edit" (click)="startEdit(p)">
+            <span class="icon-edit">✏️</span>
+          </button>
+          <button class="btn-action" title="Delete" (click)="deleteProject(p._id)">
+            <span class="icon-delete">🗑️</span>
+          </button>
+        }
+
+        <!-- Boutons édition -->
+        @if (editingProjectId === p._id) {
+          <button class="btn-action btn-confirm" title="Confirmer" (click)="confirmEdit(p)">✅</button>
+          <button class="btn-action btn-cancel" title="Annuler" (click)="cancelEdit()">❌</button>
+        }
+
+      </div>
+    </div>
+  }
+</div>
+</div>

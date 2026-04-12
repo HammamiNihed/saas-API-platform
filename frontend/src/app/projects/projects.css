@@ -1,0 +1,9 @@
+.page { padding: 2rem 2.5rem; }
+.status-inactive {
+  color: #e74c3c;
+  background: #fdecea;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}

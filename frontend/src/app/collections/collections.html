@@ -1,0 +1,56 @@
+<div class="page">
+<div class="collections-container">
+  <div class="card-creation">
+    <h2>Create New Collection</h2>
+    <p class="subtitle">Define your data structure by adding fields</p>
+
+    <div class="form-row">
+      <input type="text" [(ngModel)]="name" placeholder="Collection name (ex: Products)" class="main-input">
+    </div>
+
+    <div class="fields-builder">
+      <div class="field-entry" *ngFor="let field of fields; let i = index">
+        <input type="text" [(ngModel)]="field.name" placeholder="Field name">
+        
+        <select [(ngModel)]="field.type">
+          <option value="string">String</option>
+          <option value="number">Number</option>
+          <option value="boolean">Boolean</option>
+          <option value="date">Date</option>
+        </select>
+        
+        <button class="btn-action-delete" (click)="fields.splice(i, 1)">✕</button>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn-secondary" (click)="addField()">+ Add Field</button>
+      <button class="btn-primary" (click)="createCollection()">Create Collection</button>
+    </div>
+  </div>
+
+  <hr class="separator">
+
+  <div class="collections-list-header">
+    <h2 class="section-title">Your Collections</h2>
+  </div>
+
+  <div class="collections-grid">
+    <div class="collection-item-card" *ngFor="let c of collections">
+      <div class="col-icon">📁</div>
+      <div class="col-info">
+        <div [routerLink]="['/projects', projectId, 'collections', c.name]" class="col-name">{{ c.name }}</div>
+        <div class="col-meta">{{ c.schema?.length || 0 }} fields · Project: {{ projectId }}</div>
+      </div>
+      <div class="project-actions">
+        <button class="btn-action">✏️</button>
+        <button class="btn-action" >🗑️</button>
+      </div>
+    </div>
+    
+    <div *ngIf="collections.length === 0" class="empty-state">
+      No collections found. Create your first one above!
+    </div>
+  </div>
+</div>
+</div>

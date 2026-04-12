@@ -1,0 +1,44 @@
+<div class="layout">
+  <aside class="sidebar" >
+  <div class="sidebar-logo">
+    <div class="logo-icon">A</div>
+    <div class="logo-content">
+      <div class="logo-text">API SaaS</div>
+      <div class="logo-sub">Developer Platform</div>
+    </div>
+  </div>
+
+  <div class="nav-group">
+    <span class="group-title">WORKSPACE</span>
+    <nav>
+      <a [routerLink]="['/projects']" routerLinkActive="active" class="nav-item">
+        <span class="icon">≡</span> Projects <span class="badge"></span>
+      </a>
+      
+      <a routerLink="/keys" class="nav-item"><span class="icon">⤓</span> API Keys</a>
+    </nav>
+  </div>
+
+  <div class="nav-group">
+    <span class="group-title">SETTINGS</span>
+    <nav>
+      <a routerLink="/account" class="nav-item"><span class="icon">👤</span> Account</a>
+    </nav>
+    
+  </div>
+
+  <!-- En bas du sidebar -->
+<button class="logout-btn" (click)="logout()">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2">
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+      <polyline points="16 17 21 12 16 7"/>
+      <line x1="21" y1="12" x2="9" y2="12"/>
+    </svg>
+    Logout
+  </button>
+
+</aside>
+
+
+</div>

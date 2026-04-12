@@ -1,0 +1,119 @@
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: calc(100% - 32px);
+  margin: 16px;
+  padding: 10px 16px;
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+ 
+  bottom: 0;
+  left: 0;
+}
+
+.logout-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: #ef4444;
+}
+/* You can add global styles to this file, and also import other style files */
+.layout {
+  display: flex;
+}
+
+.sidebar {
+  width: 220px;
+  background: #6f9cde;
+  color: white;
+  height: 100vh;
+  padding: 20px;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+:root {
+  --sidebar-bg: #0f172a;
+  --sidebar-active: #1e293b;
+  --accent-blue: #3b82f6;
+  --bg-light: #f8fafc;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --success: #22c55e;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-main);
+}
+
+/* Layout Structure */
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar Styling */
+.sidebar {
+  width: 260px;
+  background-color: var(--sidebar-bg);
+  color: white;
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  padding: 0 20px 40px;
+  gap: 12px;
+}
+
+.logo-icon {
+  background: var(--accent-blue);
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar nav a {
+  color: #94a3b8;
+  text-decoration: none;
+  padding: 12px 24px;
+  transition: 0.2s;
+}
+
+.sidebar nav a.active {
+  background-color: var(--sidebar-active);
+  color: white;
+  border-left: 4px solid var(--accent-blue);
+}
+
+/* Main Content Area */
+.content {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+}

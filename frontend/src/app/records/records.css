@@ -1,0 +1,308 @@
+.page { padding: 2rem 2.5rem; }
+
+.page-header {
+  margin-bottom: 1.75rem;
+  h1 { font-size: 22px; font-weight: 500; }
+  p  { font-size: 14px; color: #6b7280; margin-top: 4px; }
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: #fffdf5;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  .label { font-size: 13px; color: #6b7280; margin-bottom: 6px; }
+  .value { font-size: 24px; font-weight: 500; }
+  .trend { font-size: 12px; color: #16a34a; margin-top: 6px; }
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.card-title { font-size: 16px; font-weight: 500; margin-bottom: 1.25rem; }
+
+/* ✅ AJOUTÉ : Ligne formulaire */
+.new-project-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1.25rem;
+  width: 100%;
+}
+
+/* ✅ AJOUTÉ : Inputs dynamiques */
+.new-project-input {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #f9fafb;
+  &:focus { outline: none; border-color: #374151; background: #fff; }
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  label {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: #6b7280;
+    margin-bottom: 6px;
+  }
+  input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #f9fafb;
+    &:focus { outline: none; border-color: #374151; background: #fff; }
+  }
+}
+
+.form-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  border: 1px solid #d1d5db;
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;          /* ✅ AJOUTÉ */
+  white-space: nowrap;     /* ✅ AJOUTÉ */
+  &:hover { background: #f3f4f6; }
+}
+
+.btn-primary {
+  background: #111827;
+  color: #fff;
+  border-color: transparent;
+  &:hover { opacity: .85; background: #111827; }
+}
+
+/* ✅ AJOUTÉ : Projects list */
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.project-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fff;
+  transition: border-color 0.2s;
+  &:hover { background: #f9fafb; }
+}
+
+.project-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #dbeafe;
+  color: #1e40af;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.project-info {
+  flex: 1;
+  min-width: 0;
+  .project-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #111827;
+  }
+  .project-meta {
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 2px;
+  }
+}
+
+.status-active {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 8px;
+  background: #dcfce7;
+  color: #15803d;
+  flex-shrink: 0;
+}
+
+.project-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.btn-action {
+  padding: 5px 8px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: transparent;
+  cursor: pointer;
+  font-size: 13px;
+  color: #6b7280;
+  transition: background 0.15s;
+  &:hover { background: #f3f4f6; }
+  &:disabled { opacity: 0.4; cursor: not-allowed; }
+}
+
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th {
+  text-align: left;
+  padding: 10px 12px;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: #6b7280;
+  border-bottom: 1px solid #e5e7eb;
+}
+td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #f3f4f6;
+}
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #f9fafb; }
+
+.user-cell { display: flex; align-items: center; gap: 8px; }
+.avatar {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  background: #dbeafe; color: #1e40af;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 500; flex-shrink: 0;
+}
+
+.badge-success {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.masked { font-family: monospace; color: #9ca3af; letter-spacing: .05em; }
+
+.action-btn {
+  padding: 5px 8px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: transparent;
+  cursor: pointer;
+  margin-right: 4px;
+  font-size: 13px;
+  color: #6b7280;
+  &:hover { background: #f3f4f6; }
+}
+
+.delete-btn { color: #dc2626; &:hover { background: #fee2e2; } }
+.empty-state { text-align: center; color: #9ca3af; padding: 3rem; }
+
+/* Bandeau édition */
+.edit-banner {
+  background: #fff8e1;
+  border-left: 4px solid #f59e0b;
+  padding: 10px 16px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #92400e;
+}
+
+/* Card en cours d'édition */
+.project-card.editing {
+  border: 2px solid #f59e0b;
+  background: #fffbeb;
+}
+
+/* Bouton secondaire */
+.btn.btn-secondary {
+  background: #e5e7eb;
+  color: #374151;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  flex-shrink: 0;      /* ✅ AJOUTÉ */
+  white-space: nowrap; /* ✅ AJOUTÉ */
+}
+
+/* Badge active (stats) */
+.badge-active {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.blocked-banner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #fdecea;
+  border: 1px solid #e74c3c;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 24px 0;
+  color: #c0392b;
+}
+
+.blocked-banner span {
+  font-size: 2rem;
+}
+
+.blocked-banner strong {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.blocked-banner p {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
