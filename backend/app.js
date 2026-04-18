@@ -7,7 +7,12 @@ const app = express();
 
 connectDB();
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://saas-api-platform.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
+
 app.use(express.json());
 app.get('/', (req, res) => {
   res.send('API is running 🚀');
